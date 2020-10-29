@@ -42,7 +42,7 @@
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
-      <version>13</version>
+      <version>11</version>
     </dependency>
     
   </dependencies>
