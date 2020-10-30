@@ -29,7 +29,7 @@ before_deploy:
   - wget -O getdown.jar https://github.com/iubar/getdown/releases/download/getdown-1.5.1/getdown-jar-with-dependencies.jar 
   - ls -lah
   - ls -lah target
-  - mkdir "${DEPLOY_FOLDER}"
+  - mkdir ${DEPLOY_FOLDER}
   - cp src/main/getdown/getdown.txt ${DEPLOY_FOLDER}
   - cp src/main/getdown/script.sh ${DEPLOY_FOLDER}
   #- cp src/main/getdown/crazyhashfile#txt ${DEPLOY_FOLDER} # Fixme: not supported by getdown-1.5.1
