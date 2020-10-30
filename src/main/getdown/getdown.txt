@@ -23,7 +23,7 @@ strict_comments = true
 #resource = funny%test dir/some=file.txt
 #resource = crazyhashfile#txt  Fixme: not supported by getdown-1.5.1
 uresource = foo.jar
-resource = script.sh
+xresource = script.sh
 
 ui.name = Getdown Test App
 ui.background_image = background.png
