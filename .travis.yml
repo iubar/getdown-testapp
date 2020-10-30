@@ -39,7 +39,7 @@ before_deploy:
   - ls -lah ${DEPLOY_FOLDER}
   - mkdir "${DEPLOY_FOLDER}/funny%test dir"
   - ls -lah ${DEPLOY_FOLDER}
-  - cp 'src/main/getdown/funny%test dir/some=file.txt' "${DEPLOY_FOLDER}/funny%test dir"
+  #- cp 'src/main/getdown/funny%test dir/some=file.txt' "${DEPLOY_FOLDER}/funny%test dir"
   - cp target/testapp/testapp.jar "${DEPLOY_FOLDER}"
   - java -cp ./getdown.jar com.threerings.getdown.tools.Digester "${DEPLOY_FOLDER}" # the digest.txt file is created by running com.threerings.getdown.tools.Digester on your Getdown project directory
   - ls -lah ${DEPLOY_FOLDER}
@@ -69,7 +69,7 @@ deploy: # see https://docs.travis-ci.com/user/deployment/releases/
     - ${DEPLOY_FOLDER}/script.sh
     #- ${DEPLOY_FOLDER}/crazyhashfile#txt  # Fixme: not supported by getdown-1.5.1
     - ${DEPLOY_FOLDER}/foo.jar
-    - ${DEPLOY_FOLDER}/funny%test dir/some=file.txt
+    #- ${DEPLOY_FOLDER}/funny%test dir/some=file.txt
     - ${DEPLOY_FOLDER}/testapp.jar
   overwrite: true
   skip_cleanup: true # otherwise Travis CI will delete all the files created during the build, which will probably delete what you are trying to upload.
