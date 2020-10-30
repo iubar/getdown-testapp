@@ -33,7 +33,7 @@ before_deploy:
   - mkdir ${DEPLOY_FOLDER}
   - cp src/main/getdown/getdown.txt ${DEPLOY_FOLDER}
   - cp src/main/getdown/script.sh ${DEPLOY_FOLDER}
-  #- cp src/main/getdown/crazyhashfile#txt ${DEPLOY_FOLDER} # Is not supported by getdown-1.5.1 ?
+  - cp src/main/getdown/crazyhashfile#txt ${DEPLOY_FOLDER} # Is not supported by getdown-1.5.1 ?
   - cp src/main/getdown/foo.jar "${DEPLOY_FOLDER}"
   - ls -lah ${DEPLOY_FOLDER}
   - mkdir "${DEPLOY_FOLDER}/funny%test dir"
@@ -66,9 +66,9 @@ deploy: # see https://docs.travis-ci.com/user/deployment/releases/
     - ${DEPLOY_FOLDER}/digest.txt
     - ${DEPLOY_FOLDER}/getdown.txt
     - ${DEPLOY_FOLDER}/script.sh
-    #- ${DEPLOY_FOLDER}/crazyhashfile#txt  # Is not supported by getdown-1.5.1 ?
+    - ${DEPLOY_FOLDER}/crazyhashfile#txt
     - ${DEPLOY_FOLDER}/foo.jar
-    - ${DEPLOY_FOLDER}/funny%test dir/some=file.txt
+    # - ${DEPLOY_FOLDER}/funny%test dir/some=file.txt # Travis can't deploy it
     - ${DEPLOY_FOLDER}/testapp.jar
   overwrite: true
   skip_cleanup: true # otherwise Travis CI will delete all the files created during the build, which will probably delete what you are trying to upload.
