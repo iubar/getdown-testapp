@@ -108,6 +108,7 @@
       </plugin>
 
       <!-- copy getdown.jar into target/testapp -->
+      <!--
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
@@ -132,8 +133,10 @@
           </execution>
         </executions>
       </plugin>
+      -->
 
       <!-- generate a digest.txt in target/testapp -->
+      <!--
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
@@ -162,6 +165,8 @@
           </dependency>
         </dependencies>
       </plugin>
+      -->
+
     </plugins>
   </build>
 
