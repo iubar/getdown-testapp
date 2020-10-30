@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/iubar/getdown-testapp.svg?branch=getdown-testapp-1.5.x)](https://travis-ci.com/iubar/getdown-testapp)
+
 This is a simple app that shows how to wire [Getdown] into a [Maven] build, as well as a few other
 bits and bobs.
 
