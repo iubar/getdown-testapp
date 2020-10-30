@@ -30,11 +30,10 @@ before_deploy:
   - ls -lah
   - ls -lah target
   - echo $DEPLOY_FOLDER
-  - echo ${DEPLOY_FOLDER}
-  - echo "${DEPLOY_FOLDER}"
-  - "echo ${DEPLOY_FOLDER}"
-  - echo '${DEPLOY_FOLDER}'
-  - 'echo ${DEPLOY_FOLDER}'    
+  - echo "$DEPLOY_FOLDER"
+  - "echo $DEPLOY_FOLDER"
+  - echo '$DEPLOY_FOLDER'
+  - 'echo $DEPLOY_FOLDER'    
   - mkdir ${DEPLOY_FOLDER}
   - cp src/main/getdown/getdown.txt ${DEPLOY_FOLDER}
   - cp src/main/getdown/script.sh ${DEPLOY_FOLDER}
