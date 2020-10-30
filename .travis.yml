@@ -13,7 +13,6 @@ env: # see https://docs.travis-ci.com/user/environment-variables/
   global:
     - TRAVIS_TAG="getdown-testapp-1.5.1"
     - DEPLOY_FOLDER="deploy"
-    - DEPLOY_FOLDER2="deploy"
   
 install: true # Without that statement, Travis will run 'mvn install' on pom.xml before the script step.
 
@@ -31,14 +30,7 @@ before_deploy:
   - wget -O getdown.jar https://github.com/iubar/getdown/releases/download/getdown-1.5.1/getdown-jar-with-dependencies.jar 
   - ls -lah
   - ls -lah target
-  - echo "TRAVIS_TAG = ${TRAVIS_TAG}"
   - echo "DEPLOY_FOLDER = ${DEPLOY_FOLDER}"
-  - echo "DEPLOY_FOLDER2 = ${DEPLOY_FOLDER2}"
-  - echo $DEPLOY_FOLDER
-  - echo "$DEPLOY_FOLDER"
-  - "echo $DEPLOY_FOLDER"
-  - echo '$DEPLOY_FOLDER'
-  - 'echo $DEPLOY_FOLDER'    
   - mkdir ${DEPLOY_FOLDER}
   - cp src/main/getdown/getdown.txt ${DEPLOY_FOLDER}
   - cp src/main/getdown/script.sh ${DEPLOY_FOLDER}
@@ -47,9 +39,8 @@ before_deploy:
   - mkdir "${DEPLOY_FOLDER}/funny%test dir"
   - cp 'src/main/getdown/funny%test dir/some=file.txt' "${DEPLOY_FOLDER}/funny%test dir"
   - cp target/testapp/testapp.jar "${DEPLOY_FOLDER}"
-  - java -cp ./getdown.jar com.threerings.getdown.tools.Digester ${DEPLOY_FOLDER} # the digest.txt file is created by running com.threerings.getdown.tools.Digester on your Getdown project directory
+  - java -cp ./getdown.jar com.threerings.getdown.tools.Digester "${DEPLOY_FOLDER}" # the digest.txt file is created by running com.threerings.getdown.tools.Digester on your Getdown project directory
   - ls -lah ${DEPLOY_FOLDER}
-  - ls -lah "${DEPLOY_FOLDER}"
   #
   # see https://docs.travis-ci.com/user/deployment/releases/#overwrite-existing-files-on-the-release  
   # Set up git user name and tag this commit
