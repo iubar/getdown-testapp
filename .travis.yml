@@ -36,7 +36,9 @@ before_deploy:
   - cp src/main/getdown/script.sh ${DEPLOY_FOLDER}
   #- cp src/main/getdown/crazyhashfile#txt ${DEPLOY_FOLDER} # Fixme: not supported by getdown-1.5.1
   - cp src/main/getdown/foo.jar "${DEPLOY_FOLDER}"
+  - ls -lah ${DEPLOY_FOLDER}
   - mkdir "${DEPLOY_FOLDER}/funny%test dir"
+  - ls -lah ${DEPLOY_FOLDER}
   - cp 'src/main/getdown/funny%test dir/some=file.txt' "${DEPLOY_FOLDER}/funny%test dir"
   - cp target/testapp/testapp.jar "${DEPLOY_FOLDER}"
   - java -cp ./getdown.jar com.threerings.getdown.tools.Digester "${DEPLOY_FOLDER}" # the digest.txt file is created by running com.threerings.getdown.tools.Digester on your Getdown project directory
