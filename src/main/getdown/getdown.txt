@@ -2,7 +2,7 @@
 # Github source files: https://raw.githubusercontent.com/iubar/getdown-testapp/getdown-testapp-1.5.x/pom.xml
 # Github released artifacts: https://github.com/iubar/getdown/releases/download/getdown-1.5.1/getdown-jar-with-dependencies.jar
 # appbase = https://samskivert.com/code/testapp
-appbase = https://github.com/iubar/getdown/releases/download/getdown-testapp-1.5.1
+appbase = https://github.com/iubar/getdown-testapp/releases/download/getdown-testapp-1.5.1
 
 # the jar file that contains our code
 code = testapp.jar
