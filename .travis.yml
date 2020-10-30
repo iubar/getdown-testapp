@@ -30,18 +30,17 @@ before_deploy:
   - wget -O getdown.jar https://github.com/iubar/getdown/releases/download/getdown-1.5.1/getdown-jar-with-dependencies.jar 
   - ls -lah
   - ls -lah target
-  - echo "DEPLOY_FOLDER = ${DEPLOY_FOLDER}"
   - mkdir ${DEPLOY_FOLDER}
   - cp src/main/getdown/getdown.txt ${DEPLOY_FOLDER}
   - cp src/main/getdown/script.sh ${DEPLOY_FOLDER}
-  #- cp src/main/getdown/crazyhashfile#txt ${DEPLOY_FOLDER} # Fixme: not supported by getdown-1.5.1
+  #- cp src/main/getdown/crazyhashfile#txt ${DEPLOY_FOLDER} # Is not supported by getdown-1.5.1 ?
   - cp src/main/getdown/foo.jar "${DEPLOY_FOLDER}"
   - ls -lah ${DEPLOY_FOLDER}
   - mkdir "${DEPLOY_FOLDER}/funny%test dir"
   - ls -lah ${DEPLOY_FOLDER}
-  #- cp 'src/main/getdown/funny%test dir/some=file.txt' "${DEPLOY_FOLDER}/funny%test dir"
+  - cp 'src/main/getdown/funny%test dir/some=file.txt' "${DEPLOY_FOLDER}/funny%test dir"
   - cp target/testapp/testapp.jar "${DEPLOY_FOLDER}"
-  - java -cp ./getdown.jar com.threerings.getdown.tools.Digester "${DEPLOY_FOLDER}" # the digest.txt file is created by running com.threerings.getdown.tools.Digester on your Getdown project directory
+  - java -cp ./getdown.jar com.threerings.getdown.tools.Digester ${DEPLOY_FOLDER} # the digest.txt file is created by running com.threerings.getdown.tools.Digester on your Getdown project directory
   - ls -lah ${DEPLOY_FOLDER}
   #
   # see https://docs.travis-ci.com/user/deployment/releases/#overwrite-existing-files-on-the-release  
@@ -67,9 +66,9 @@ deploy: # see https://docs.travis-ci.com/user/deployment/releases/
     - ${DEPLOY_FOLDER}/digest.txt
     - ${DEPLOY_FOLDER}/getdown.txt
     - ${DEPLOY_FOLDER}/script.sh
-    #- ${DEPLOY_FOLDER}/crazyhashfile#txt  # Fixme: not supported by getdown-1.5.1
+    #- ${DEPLOY_FOLDER}/crazyhashfile#txt  # Is not supported by getdown-1.5.1 ?
     - ${DEPLOY_FOLDER}/foo.jar
-    #- ${DEPLOY_FOLDER}/funny%test dir/some=file.txt
+    - ${DEPLOY_FOLDER}/funny%test dir/some=file.txt
     - ${DEPLOY_FOLDER}/testapp.jar
   overwrite: true
   skip_cleanup: true # otherwise Travis CI will delete all the files created during the build, which will probably delete what you are trying to upload.
