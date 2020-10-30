@@ -21,7 +21,7 @@ jvmarg = -Dusername=\%ENV.USER%
 
 strict_comments = true
 resource = funny%test dir/some=file.txt
-resource = crazyhashfile#txt
+#resource = crazyhashfile#txt  Fixme: not supported by getdown-1.5.1
 uresource = foo.jar
 xresource = script.sh
 
