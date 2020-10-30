@@ -24,6 +24,7 @@ script:
   - wget -O getdown.jar https://github.com/iubar/getdown/releases/download/getdown-1.5.1/getdown-jar-with-dependencies.jar 
   - ls -lah
   - ls -lah target
+  - cp src/main/getdown/getdown.txt target/testapp/
   - cp src/main/getdown/script.sh target/testapp/
   - cp src/main/getdown/crazyhashfile#txt target/testapp/
   - cp src/main/getdown/foo.jar target/testapp/
@@ -55,9 +56,8 @@ deploy: # see https://docs.travis-ci.com/user/deployment/releases/
   provider: releases
   api_key: ${GITHUB_OAUTH_TOKEN}
   file: 
-    - target/testapp/getdown.txt
     - target/testapp/digest.txt
-    - target/testapp/testapp.jar
+    - target/testapp/getdown.txt
     - target/testapp/script.sh
     - target/testapp/crazyhashfile#txt
     - target/testapp/foo.jar
