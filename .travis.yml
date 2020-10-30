@@ -64,13 +64,13 @@ deploy: # see https://docs.travis-ci.com/user/deployment/releases/
   provider: releases
   api_key: ${GITHUB_OAUTH_TOKEN}
   file: 
-    - "${DEPLOY_FOLDER}/digest.txt"
-    - "${DEPLOY_FOLDER}/getdown.txt"
-    - "${DEPLOY_FOLDER}/script.sh"
-    #- "${DEPLOY_FOLDER}/crazyhashfile#txt"  # Fixme: not supported by getdown-1.5.1
-    - "${DEPLOY_FOLDER}/foo.jar"
-    - "${DEPLOY_FOLDER}/funny%test dir/some=file.txt"
-    - "${DEPLOY_FOLDER}/testapp.jar"
+    - ${DEPLOY_FOLDER}/digest.txt
+    - ${DEPLOY_FOLDER}/getdown.txt
+    - ${DEPLOY_FOLDER}/script.sh
+    #- ${DEPLOY_FOLDER}/crazyhashfile#txt  # Fixme: not supported by getdown-1.5.1
+    - ${DEPLOY_FOLDER}/foo.jar
+    - ${DEPLOY_FOLDER}/funny%test dir/some=file.txt
+    - ${DEPLOY_FOLDER}/testapp.jar
   overwrite: true
   skip_cleanup: true # otherwise Travis CI will delete all the files created during the build, which will probably delete what you are trying to upload.
   on:
