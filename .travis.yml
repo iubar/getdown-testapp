@@ -29,6 +29,7 @@ before_deploy:
   - wget -O getdown.jar https://github.com/iubar/getdown/releases/download/getdown-1.5.1/getdown-jar-with-dependencies.jar 
   - ls -lah
   - ls -lah target
+  - echo $DEPLOY_FOLDER
   - echo ${DEPLOY_FOLDER}
   - echo "${DEPLOY_FOLDER}"
   - "echo ${DEPLOY_FOLDER}"
