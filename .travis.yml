@@ -32,7 +32,7 @@ before_deploy:
   - mkdir ${DEPLOY_FOLDER}
   - cp src/main/getdown/getdown.txt ${DEPLOY_FOLDER}
   - cp src/main/getdown/script.sh ${DEPLOY_FOLDER}
-  - cp src/main/getdown/crazyhashfile#txt ${DEPLOY_FOLDER}
+  #- cp src/main/getdown/crazyhashfile#txt ${DEPLOY_FOLDER} # Fixme: not supported by getdown-1.5.1
   - cp src/main/getdown/foo.jar ${DEPLOY_FOLDER}
   - mkdir "${DEPLOY_FOLDER}/funny%test dir"
   - cp 'src/main/getdown/funny%test dir/some=file.txt' "${DEPLOY_FOLDER}/funny%test dir"
@@ -63,7 +63,7 @@ deploy: # see https://docs.travis-ci.com/user/deployment/releases/
     - ${DEPLOY_FOLDER}/digest.txt
     - ${DEPLOY_FOLDER}/getdown.txt
     - ${DEPLOY_FOLDER}/script.sh
-    - ${DEPLOY_FOLDER}/crazyhashfile#txt
+    #- ${DEPLOY_FOLDER}/crazyhashfile#txt  # Fixme: not supported by getdown-1.5.1
     - ${DEPLOY_FOLDER}/foo.jar
     - '${DEPLOY_FOLDER}/funny%test dir/some=file.txt'
     - ${DEPLOY_FOLDER}/testapp.jar    
