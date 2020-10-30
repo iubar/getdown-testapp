@@ -21,7 +21,11 @@ script:
   - java -version
   - mvn --batch-mode --show-version -f pom.xml clean package
   - ls -lah target
-  - ls -lah target/testapp    
+  - ls -lah target/testapp
+after_script:
+  - echo "Done"
+  
+before_deploy:
   - wget -O getdown.jar https://github.com/iubar/getdown/releases/download/getdown-1.5.1/getdown-jar-with-dependencies.jar 
   - ls -lah
   - ls -lah target
@@ -31,15 +35,12 @@ script:
   - cp src/main/getdown/crazyhashfile#txt ${DEPLOY_FOLDER}
   - cp src/main/getdown/foo.jar ${DEPLOY_FOLDER}
   - cp 'src/main/getdown/funny%test dir/some=file.txt' ${DEPLOY_FOLDER}
-  - ls -lah '${DEPLOY_FOLDER}'
-  - ls -lah '${DEPLOY_FOLDER}/funny%test dir'
+  - ls -lah "${DEPLOY_FOLDER}"
+  - ls -lah "${DEPLOY_FOLDER}/funny%test dir"
   - cp target/testapp/testapp.jar ${DEPLOY_FOLDER}
   - java -cp ./getdown.jar com.threerings.getdown.tools.Digester ${DEPLOY_FOLDER} # the digest.txt file is created by running com.threerings.getdown.tools.Digester on your Getdown project directory
   - ls -lah ${DEPLOY_FOLDER}
-after_script:
-  - echo "Done"
-  
-before_deploy:
+  #
   # see https://docs.travis-ci.com/user/deployment/releases/#overwrite-existing-files-on-the-release  
   # Set up git user name and tag this commit
   # - git config --local user.name ${GIT_USER_NAME}
