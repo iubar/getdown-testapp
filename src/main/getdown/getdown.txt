@@ -20,10 +20,10 @@ apparg = %APPDIR%
 jvmarg = -Dusername=\%ENV.USER%
 
 strict_comments = true
-#resource = funny%test dir/some=file.txt
-#resource = crazyhashfile#txt  Fixme: not supported by getdown-1.5.1
+resource = funny%test dir/some=file.txt
+# resource = crazyhashfile#txt   # Syntax not supported by getdown-1.5.1
 uresource = foo.jar
-xresource = script.sh
+# xresource = script.sh          # "x" flag is not supported by getdown-1.5.1
 
 ui.name = Getdown Test App
 ui.background_image = background.png
