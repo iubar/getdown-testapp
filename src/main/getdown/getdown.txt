@@ -20,7 +20,7 @@ apparg = %APPDIR%
 jvmarg = -Dusername=\%ENV.USER%
 
 strict_comments = true
-# resource = funny%test dir/some=file.txt # digest error ?
+# resource = funny%test dir/some=file.txt # Error: getdown() failed. java.io.IOException: m.invalid_digest_file
 # resource = crazyhashfile#txt   # Syntax not supported by getdown-1.5.1
 uresource = foo.jar
 # xresource = script.sh          # "x" flag is not supported by getdown-1.5.1
