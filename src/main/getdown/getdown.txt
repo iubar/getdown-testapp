@@ -1,8 +1,8 @@
-# where our app is hosted on the internets
 # Github source files: https://raw.githubusercontent.com/iubar/getdown-testapp/getdown-testapp-1.5.x/pom.xml
-# Github released artifacts: https://github.com/iubar/getdown/releases/download/getdown-1.5.1/getdown-jar-with-dependencies.jar
-# appbase = https://samskivert.com/code/testapp
-appbase = https://www.pagheopen.it/downloads/getdown-testapp
+# Github released artifacts: https://github.com/iubar/getdown/releases/download/getdown-1.5.1/getdown-1.5.1-jar-with-dependencies.jar
+
+# where our app is hosted on the internets
+appbase = https://www.pagheopen.it/downloads/getdown-testapp/1.5
 
 # the jar file that contains our code
 code = testapp.jar
@@ -20,10 +20,7 @@ apparg = %APPDIR%
 jvmarg = -Dusername=\%ENV.USER%
 
 strict_comments = true
-# resource = funny%test dir/some=file.txt # Error: getdown() failed. java.io.IOException: m.invalid_digest_file
-# resource = crazyhashfile#txt   # Syntax not supported by getdown-1.5.1
 uresource = foo.jar
-# xresource = script.sh          # "x" flag is not supported by getdown-1.5.1
 resource = script.sh
 
 ui.name = Getdown Test App
