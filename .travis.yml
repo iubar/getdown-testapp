@@ -1,0 +1,72 @@
+dist: bionic # https://docs.travis-ci.com/user/reference/bionic/
+language: java
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+
+jdk: # see https://docs.travis-ci.com/user/reference/bionic/#jvm-clojure-groovy-java-scala-support
+  - openjdk11
+  #- openjdk16
+  
+env: # see https://docs.travis-ci.com/user/environment-variables/
+  global:
+    - TRAVIS_TAG="getdown-testapp-1.8.6"
+    - DEPLOY_FOLDER="deploy"
+  
+install: true # Without that statement, Travis will run 'mvn install' on pom.xml before the script step.
+
+script: 
+  - hostname
+  - whoami
+  - java -version
+  - mvn --batch-mode --show-version -f pom.xml clean package
+  - ls -lah target
+  - ls -lah target/testapp
+after_script:
+  - echo "Done"
+  
+before_deploy:
+  - wget -O getdown.jar https://github.com/iubar/getdown/releases/download/getdown-1.8.6/getdown-jar-with-dependencies.jar 
+  - ls -lah
+  - ls -lah target
+  - mkdir ${DEPLOY_FOLDER}
+  - cp src/main/getdown/getdown.txt ${DEPLOY_FOLDER}
+  - cp src/main/getdown/script.sh ${DEPLOY_FOLDER}
+  - cp src/main/getdown/crazyhashfile#txt ${DEPLOY_FOLDER}
+  - cp src/main/getdown/foo.jar "${DEPLOY_FOLDER}"
+  - ls -lah ${DEPLOY_FOLDER}
+  - mkdir "${DEPLOY_FOLDER}/funny%test dir"
+  - ls -lah ${DEPLOY_FOLDER}
+  - cp 'src/main/getdown/funny%test dir/some=file.txt' "${DEPLOY_FOLDER}/funny%test dir"
+  - cp target/testapp/testapp.jar "${DEPLOY_FOLDER}"
+  - java -cp ./getdown.jar com.threerings.getdown.tools.Digester ${DEPLOY_FOLDER} # the digest.txt file is created by running com.threerings.getdown.tools.Digester on your Getdown project directory
+  - ls -lah ${DEPLOY_FOLDER}
+  #
+  # see https://docs.travis-ci.com/user/deployment/releases/#overwrite-existing-files-on-the-release  
+  # Set up git user name and tag this commit
+  # - git config --local user.name ${GIT_USER_NAME}
+  # - git config --local user.email ${GIT_USER_EMAIL}
+  # - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+  #- git tag $TRAVIS_TAG
+  - echo "TRAVIS_TAG = ${TRAVIS_TAG}"
+  # Delete the tag (see http://dev.topheman.com/continuous-deployment-with-travis-ci/)
+  # (delete local tag)
+  - git tag -d ${TRAVIS_TAG} || true # the tag may not exist
+  # (delete remote tag)
+  - git push --delete origin ${TRAVIS_TAG} || true # the tag may not exist
+  - git tag -d ${TRAVIS_TAG} || true # the tag may not exist
+  # (alternative approach)
+  # - git push origin :refs/tags/${TRAVIS_TAG} || true # the tag may not exist
+
+deploy: # see https://docs.travis-ci.com/user/deployment/releases/ 
+  provider: releases
+  api_key: ${GITHUB_OAUTH_TOKEN}
+  file: 
+    - ${DEPLOY_FOLDER}/digest.txt
+    - ${DEPLOY_FOLDER}/getdown.txt
+    - ${DEPLOY_FOLDER}/testapp.jar
+  overwrite: true
+  skip_cleanup: true # otherwise Travis CI will delete all the files created during the build, which will probably delete what you are trying to upload.
+  on:
+    branch: getdown-testapp-1.8.x # see https://docs.travis-ci.com/user/deployment#Conditional-Releases-with-on
