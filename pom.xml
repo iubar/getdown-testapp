@@ -38,10 +38,24 @@
       <artifactId>getdown-launcher</artifactId>
       <version>${getdown.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-controls</artifactId>
+      <version>13</version>
+    </dependency>
   </dependencies>
 
   <build>
     <finalName>testapp</finalName>
+    
+    <plugin>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-maven-plugin</artifactId>
+        <version>0.0.3</version>
+        <configuration>
+          <mainClass>${mainClass}</mainClass>
+        </configuration>
+      </plugin>
 
     <plugins>
       <plugin>
