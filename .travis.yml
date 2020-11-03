@@ -27,7 +27,8 @@ after_script:
   - echo "Done"
   
 before_deploy:
-  - wget -O getdown.jar https://github.com/iubar/getdown/releases/download/getdown-1.8.6/getdown-1.8.6-jar-with-dependencies.jar 
+  - wget https://github.com/iubar/getdown/releases/download/getdown-1.8.61/getdown-core-1.8.61.jar 
+  - wget https://github.com/iubar/getdown/releases/download/getdown-1.8.61/getdown-ant-1.8.61.jar 
   - ls -lah
   - ls -lah target
   - mkdir ${DEPLOY_FOLDER}
@@ -40,7 +41,7 @@ before_deploy:
   - ls -lah ${DEPLOY_FOLDER}
   - cp 'src/main/getdown/funny%test dir/some=file.txt' "${DEPLOY_FOLDER}/funny%test dir"
   - cp target/testapp/testapp.jar "${DEPLOY_FOLDER}"
-  - java -cp ./getdown.jar com.threerings.getdown.tools.Digester ${DEPLOY_FOLDER} # the digest.txt file is created by running com.threerings.getdown.tools.Digester on your Getdown project directory
+  - java -cp ./getdown-core-1.8.61.jar:./getdown-ant-1.8.61.jar com.threerings.getdown.tools.Digester ${DEPLOY_FOLDER} # the digest.txt file is created by running com.threerings.getdown.tools.Digester on your Getdown project directory
   - ls -lah ${DEPLOY_FOLDER}
   #
   # see https://docs.travis-ci.com/user/deployment/releases/#overwrite-existing-files-on-the-release  
