@@ -1,5 +1,5 @@
 # where our app is hosted on the internets
-appbase = https:///www.pagheopen.it/downloads/getdown-testapp/1.8
+appbase = https://www.pagheopen.it/downloads/getdown-testapp/1.8
 
 # the jar file that contains our code
 code = testapp.jar
